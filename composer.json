@@ -1,0 +1,17 @@
+{
+    "name": "Devine/AutoInitailizer",
+    "description": "\"test\"",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aye Min Aung",
+            "email": "mgdevine89@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "autoload":{
+        "psr-4": {
+            "Devine\\": "src/"
+        }
+    }
+}
