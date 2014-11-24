@@ -1,11 +1,12 @@
 <?php namespace Devine\AutoInitializer;
 use ReflectionClass;
-use Exception;
+use Devine\AutoInitializer\Exceptions\UninstantiableException;
+use Devine\AutoInitializer\Exceptions\ArgumentDefaultValueMissingException;
 class AutoInitializer{
   public function build($className){
     $reflection = new ReflectionClass($className);
     if (! $reflection->isInstantiable()){
-      throw new Exception("Not Instantiable");
+      throw new UninstantiableException("Not Instantiable");
     }
     $constructor = $reflection->getConstructor();
     if(is_null($constructor)) return new $className;
@@ -32,7 +33,7 @@ class AutoInitializer{
     if($parameter->isDefaultValueAvailable()){
       return $parameter->getDefaultValue();
     }else{
-      throw new Exception("Default Not Prvided!");
+      throw new ArgumentDefaultValueMissingException("Default Not Prvided!");
     }
   }
 
